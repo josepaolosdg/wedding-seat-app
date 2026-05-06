@@ -5,22 +5,42 @@
 body {
     margin: 0;
     font-family: 'Poppins', sans-serif;
-    background: linear-gradient(135deg, #f4f6f2, #e8ede5);
-    color: #3e433a;
-    -webkit-font-smoothing: antialiased;
-    padding: env(safe-area-inset-top) 16px env(safe-area-inset-bottom);
+    color: var(--text);
+    background: var(--bg);
+
+    min-height: 100vh;
+
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    padding: 16px;
+
+    position: relative;
+    overflow-x: hidden;
 }
 
 /* CONTAINER */
-.container {
+.card, .container {
+    position: relative;
+    z-index: 1;
+
     width: 100%;
-    max-width: 420px;
-    margin: 40px auto;
-    padding: 24px;
-    background: #ffffff;
-    border-radius: 18px;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.06);
+    max-width: 520px; /* 👈 bigger than before */
+
+    padding: 28px;
+
+    background: rgba(255,255,255,0.92);
+    border: 1px solid var(--border);
+    border-radius: 20px;
+
+    box-shadow: 0 12px 35px rgba(0,0,0,0.08);
+
     text-align: center;
+
+    backdrop-filter: blur(6px);
+
+    animation: fadeIn 0.5s ease-in-out;
 }
 
 /* TYPOGRAPHY */
@@ -134,9 +154,10 @@ h2 {
 
 /* TABLET */
 @media (min-width: 768px) {
-    .container {
-        margin: 80px auto;
-        padding: 32px;
+    .card, .container {
+        width: 92vw;        /* 👈 almost full screen */
+        max-width: 520px;
+        transform: scale(1.03); /* 👈 subtle enlargement */
     }
 
     h1 {
@@ -152,5 +173,31 @@ h2 {
 @media (min-width: 1024px) {
     .container {
         max-width: 480px;
+    }
+}
+
+@media (max-width: 480px) {
+    .card, .container {
+        width: calc(100% - 20px);
+        margin: 14px auto;
+        padding: 18px;
+        border-radius: 16px;
+        transform: scale(1.01);
+    }
+
+    h1 {
+        font-size: 22px;
+    }
+
+    h2 {
+        font-size: 30px;
+    }
+}
+
+@media (max-width: 380px) {
+    .card, .container {
+        width: 94vw;
+        transform: scale(1.02);
+        padding: 22px;
     }
 }

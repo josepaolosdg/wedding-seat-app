@@ -1,0 +1,23 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Your Seat</title>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        {% if guest %}
+            <h1>Welcome, {{ guest.name }}</h1>
+            <p>Your table is</p>
+            <h2>{{ guest.table }}</h2>
+            <h3>We’re so happy you’re here 💖</h3>
+        {% else %}
+            <h1>Oops!</h1>
+            <p>We couldn’t find your name.</p>
+        {% endif %}
+
+        <a href="/">Got it wrong? Search Again</a>
+    </div>
+</body>
+</html>

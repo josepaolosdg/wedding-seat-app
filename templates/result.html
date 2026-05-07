@@ -1,23 +1,26 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Your Seat</title>
     <link rel="stylesheet" href="/static/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 <body>
     <div class="container">
         {% if guest %}
-            <h1>Welcome, {{ guest.name }}</h1>
+            <div class="eyebrow">Welcome</div>
+            <h1>{{ guest.name }}</h1>
             <p>Your table is</p>
             <h2>{{ guest.table }}</h2>
-            <h3>We’re so happy you’re here 💖</h3>
+            <h3>We’re so happy you’re here</h3>
         {% else %}
-            <h1>Oops!</h1>
+            <div class="eyebrow">Oops!</div>
+            <h1>Name not found</h1>
             <p>We couldn’t find your name.</p>
         {% endif %}
 
-        <a href="/">Got it wrong? Search Again</a>
+        <a class="btn" href="/">Search Again</a>
     </div>
 </body>
 </html>

@@ -1,87 +1,30 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Wedding Cards</title>
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
-
-    <style>
-        body {
-            margin: 0;
-            font-family: 'Poppins', sans-serif;
-            background: linear-gradient(135deg, #f4f6f2, #e8ede5);
-            color: #3e433a;
-            padding: 20px;
-        }
-
-        h1 {
-            text-align: center;
-            font-family: 'Playfair Display', serif;
-            color: #3e433a;
-            margin-bottom: 20px;
-        }
-
-        .grid {
-            display: grid;
-            grid-template-columns: 1fr;
-            gap: 16px;
-            max-width: 600px;
-            margin: auto;
-        }
-
-        .card {
-            background: white;
-            padding: 16px;
-            border-radius: 14px;
-            box-shadow: 0 8px 20px rgba(0,0,0,0.08);
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
-
-        .name {
-            font-weight: 600;
-        }
-
-        .table {
-            color: #3e433a;
-            font-size: 14px;
-        }
-
-        a {
-            text-decoration: none;
-            color: white;
-            background: #6b7d5c;
-            padding: 8px 12px;
-            border-radius: 10px;
-            font-size: 13px;
-        }
-
-        @media (min-width: 600px) {
-            .grid {
-                grid-template-columns: 1fr 1fr;
-            }
-        }
-    </style>
+    <link rel="stylesheet" href="/static/style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 
 <body>
+    <div class="cards-container">
+        <h1>Wedding Seating Cards</h1>
 
-<h1>Wedding Seating Cards</h1>
+        <div class="cards-grid">
+            {% for guest in guests %}
+            <div class="card" onclick="window.open('/card/{{ guest.id }}', '_blank')">
+                <div>
+                    <div class="card-item-name">{{ guest.name }}</div>
+                    <div class="card-item-table">{{ guest.table }}</div>
+                </div>
 
-<div class="grid">
-    {% for guest in guests %}
-    <div class="card">
-        <div>
-            <div class="name">{{ guest.name }}</div>
-            <div class="table">{{ guest.table }}</div>
+                <a href="/card/{{ guest.id }}" target="_blank" class="card-item-link" onclick="event.stopPropagation()">
+                    View Card
+                </a>
+            </div>
+            {% endfor %}
         </div>
-
-        <a href="/card/{{ guest.id }}" target="_blank">
-            View
-        </a>
     </div>
-    {% endfor %}
-</div>
-
 </body>
 </html>

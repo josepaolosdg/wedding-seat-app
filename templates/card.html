@@ -1,29 +1,32 @@
 <!DOCTYPE html>
 <html>
 <head>
+    <meta name="viewport" content="width=device-width, initial-scale=1">
     <title>Your Wedding Card</title>
     <link rel="stylesheet" href="/static/style.css">
-    <link href="https://fonts.googleapis.com/css2?family=Playfair+Display&family=Poppins&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Playfair+Display:wght@400;500;600&family=Poppins:wght@300;400;500&display=swap" rel="stylesheet">
 </head>
 
 <body>
 
-<div class="card">
+<div class="card wedding-card">
+    <div class="card-frame"></div>
+    <div class="card-content">
+        <div class="eyebrow">The wedding of</div>
+        <h1>{{ guest.name }}</h1>
+        <div class="table">{{ guest.table }}</div>
 
-    <h1>{{ guest.name }}</h1>
-    <div class="table">{{ guest.table }}</div>
+        <img src="data:image/png;base64,{{ qr }}">
 
-    <img src="data:image/png;base64,{{ qr }}">
+        <div class="note">
+            Save this card or take a screenshot. It works offline.
+        </div>
 
-    <div class="note">
-        Save this card or take a screenshot. It works offline.
+        <div class="actions">
+            <a class="btn" href="javascript:window.print()">Print / Save PDF</a>
+            <a class="btn secondary" href="/cards">All Cards</a>
+        </div>
     </div>
-
-    <div class="actions">
-        <a class="btn" href="javascript:window.print()">Print / Save PDF</a>
-        <a class="btn secondary" href="/cards">All Cards</a>
-    </div>
-
 </div>
 
 </body>
